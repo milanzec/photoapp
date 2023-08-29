@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PhotosService } from '../photos.service';
 
 @Component({
   selector: 'app-photoshow',
@@ -6,5 +7,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./photoshow.component.css']
 })
 export class PhotoshowComponent {
+
+  photos = ''
+
+  constructor(private photoservise: PhotosService) {
+    this.photoservise.getPhotos().subscribe((response) =>
+      this.photos = response.urls.regular
+    )
+  }
+
+  onClick() {
+    this.photoservise.getPhotos().subscribe((response) =>
+      this.photos = response.urls.regular
+    )
+  }
 
 }
